@@ -40,21 +40,25 @@ class NewPost extends Component {
         // console.log(targetName, ' : ', targetValue );
 
         this.setState({
-
              formData: {
               ...this.state.formData,   
               [targetName]: targetValue
              }
-
         });
         //  console.log("State body:", this.state.body);   
     }
 
+    closeApiCompleteStatus = () => {
+        this.setState({
+            apiCompleteStatus: false
+        });
+    }
+
     render() {
         const apiResultAlert = (<div className="alert alert-success alert-dismissible fade show">
-            <strong>Success!</strong> Your message has been sent successfully.
-                                    <button type="button" className="close" data-dismiss="alert">&times;</button>
-        </div>);
+                                <strong>Success!</strong> Your message has been sent successfully.
+                                <button type="button" className="close" data-dismiss="alert" onClick={this.closeApiCompleteStatus}>&times;</button>
+                                </div>);
 
         let dynamicAlert = null;
 
@@ -73,11 +77,11 @@ class NewPost extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label>Title:</label>
-                            <input name="title" type="text" className="form-control" onChange={this.handleInputChange} />
+                            <input name="title" type="text" className="form-control" onChange={this.handleChange} />
                         </div>
                         <div className="form-group">
                             <label>Body:</label>
-                            <textarea name="body" className="form-control" onChange={this.handleInputChange}></textarea>
+                            <textarea name="body" className="form-control" onChange={this.handleChange}></textarea>
                         </div>
                         <button type="submit" className="btn btn-success">Submit</button>
                     </form>

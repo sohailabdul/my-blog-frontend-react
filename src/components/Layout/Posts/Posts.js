@@ -20,8 +20,8 @@ class Posts extends Component {
                 // console.log(JSON.stringify(posts));
                 this.setState({
                     posts: posts
-                });
             });
+        });
     }
 
     deletePostHandler = (id) => {
@@ -35,14 +35,21 @@ class Posts extends Component {
         });
     }
 
+    // handleDelete = (event) => {
+    //     event.preventDefault();
+
+    //     axios.delete(`https://jsonplaceholder.typicode.com/posts/${this.state.posts.id}`)
+    //     .then(res => {
+    //         console.log(res.data);
+    //     });
+    // }
+
     render() {
         return (
             <div>
                 {this.state.posts.map(post => {
-                    return (
-                        <Post title={post.title} body={post.body} key={post.id}
-                        delete={ () => this.deletePostHandler(post.id) } />
-                    );
+                    return <Post title={post.title} body={post.body} key={post.id}
+                    delete={ () => this.deletePostHandler(post.id) } />
                 })}
             </div>
         );
